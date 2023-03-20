@@ -1,0 +1,130 @@
+Assimulo==2.9
+attrs @ file:///home/conda/feedstock_root/build_artifacts/attrs_1620387926260/work
+backcall==0.2.0
+bleach==3.1.5
+bokeh @ file:///D:/bld/bokeh_1625757104898/work
+Brotli @ file:///D:/bld/brotli-split_1625213738974/work
+brotlipy==0.7.0
+certifi==2021.5.30
+cffi @ file:///D:/bld/cffi_1625835497933/work
+chardet @ file:///D:/bld/chardet_1610093646853/work
+click @ file:///D:/bld/click_1621503984716/work
+cloudpickle @ file:///home/conda/feedstock_root/build_artifacts/cloudpickle_1598400192773/work
+colorama @ file:///home/conda/feedstock_root/build_artifacts/colorama_1602866480661/work
+cryptography @ file:///D:/bld/cryptography_1616851649655/work
+cycler==0.10.0
+Cython==0.29.20
+cytoolz==0.11.0
+dash @ file:///home/conda/feedstock_root/build_artifacts/dash_1618036125020/work
+dash-bootstrap-components @ file:///home/conda/feedstock_root/build_artifacts/dash-bootstrap-components_1620178126952/work
+dash-core-components @ file:///home/conda/feedstock_root/build_artifacts/dash-core-components_1617984947808/work
+dash-html-components @ file:///home/conda/feedstock_root/build_artifacts/dash-html-components_1617985450943/work
+dash-renderer @ file:///home/conda/feedstock_root/build_artifacts/dash-renderer_1617984936069/work
+dash-table @ file:///home/conda/feedstock_root/build_artifacts/dash-table_1617984959581/work
+dask @ file:///home/conda/feedstock_root/build_artifacts/dask-core_1625867571991/work
+decorator==4.4.2
+defusedxml==0.6.0
+distributed @ file:///D:/bld/distributed_1625875313672/work
+entrypoints==0.3
+et-xmlfile==1.0.1
+Flask @ file:///home/conda/feedstock_root/build_artifacts/flask_1621629915293/work
+Flask-Compress @ file:///home/conda/feedstock_root/build_artifacts/flask-compress_1623842138238/work
+FMPy @ file:///D:/bld/fmpy_1618949297816/work/FMPy-0.3.0-py3-none-any.whl
+fsspec @ file:///home/conda/feedstock_root/build_artifacts/fsspec_1626188337504/work
+future @ file:///D:/bld/future_1610147454374/work
+HeapDict==1.0.1
+idna @ file:///home/conda/feedstock_root/build_artifacts/idna_1593328102638/work
+importlib-metadata @ file:///D:/bld/importlib-metadata_1625464001364/work
+ipykernel==5.3.2
+ipython==7.16.1
+ipython-genutils==0.2.0
+ipywidgets==7.5.1
+itsdangerous @ file:///home/conda/feedstock_root/build_artifacts/itsdangerous_1621360792037/work
+jdcal==1.4.1
+jedi==0.17.1
+Jinja2 @ file:///home/conda/feedstock_root/build_artifacts/jinja2_1621419064915/work
+joblib==1.1.0
+jsonschema @ file:///home/conda/feedstock_root/build_artifacts/jsonschema_1614815863336/work
+jupyter==1.0.0
+jupyter-client==6.1.5
+jupyter-console==6.1.0
+jupyter-core @ file:///D:/bld/jupyter_core_1612125450516/work
+kiwisolver @ file:///D:/bld/kiwisolver_1610099948875/work
+lark-parser @ file:///home/conda/feedstock_root/build_artifacts/lark-parser_1620449992245/work
+linecache2==1.0.0
+locket==0.2.0
+lorem==0.1.1
+lxml @ file:///D:/bld/lxml_1616532526926/work
+MarkupSafe @ file:///D:/bld/markupsafe_1621455847127/work
+matplotlib @ file:///D:/bld/matplotlib-suite_1620506206452/work
+mistune==0.8.4
+mpmath==1.1.0
+msgpack @ file:///D:/bld/msgpack-python_1610121836457/work
+nbconvert==5.6.1
+nbformat @ file:///home/conda/feedstock_root/build_artifacts/nbformat_1617383142101/work
+notebook==6.0.3
+numpy @ file:///D:/bld/numpy_1624400025471/work
+olefile @ file:///home/conda/feedstock_root/build_artifacts/olefile_1602866521163/work
+opencv-python==4.5.2.54
+openpyxl==3.0.6
+packaging @ file:///home/conda/feedstock_root/build_artifacts/packaging_1625323647219/work
+pandas @ file:///D:/bld/pandas_1625236589640/work
+pandocfilters==1.4.2
+parso==0.7.0
+partd @ file:///home/conda/feedstock_root/build_artifacts/partd_1617910651905/work
+pickleshare==0.7.5
+Pillow @ file:///D:/bld/pillow_1625678130042/work
+plotly @ file:///home/conda/feedstock_root/build_artifacts/plotly_1624919128282/work
+prometheus-client==0.8.0
+prompt-toolkit==3.0.5
+psutil @ file:///D:/bld/psutil_1610127325750/work
+PyCosimLibrary==0.0.5
+pycparser @ file:///home/conda/feedstock_root/build_artifacts/pycparser_1593275161868/work
+Pygments==2.6.1
+pyOpenSSL @ file:///home/conda/feedstock_root/build_artifacts/pyopenssl_1608055815057/work
+pyparsing==2.4.7
+pyqtgraph @ file:///tmp/build/80754af9/pyqtgraph_1594064840332/work
+pyrsistent @ file:///D:/bld/pyrsistent_1610147004705/work
+PySocks @ file:///D:/bld/pysocks_1610291742246/work
+python-dateutil @ file:///home/conda/feedstock_root/build_artifacts/python-dateutil_1626286286081/work
+pytz @ file:///home/conda/feedstock_root/build_artifacts/pytz_1612179539967/work
+pywin32==300
+pywinpty==0.5.7
+PyYAML==5.4.1
+pyzmq==22.3.0
+qtconsole==4.7.5
+QtPy==1.9.0
+requests @ file:///home/conda/feedstock_root/build_artifacts/requests_1608156231189/work
+scikit-learn==1.1.1
+scipy==1.6.2
+seaborn==0.10.1
+Send2Trash==1.5.0
+sip==4.19.13
+six @ file:///home/conda/feedstock_root/build_artifacts/six_1590081179328/work
+sklearn==0.0
+sortedcontainers @ file:///home/conda/feedstock_root/build_artifacts/sortedcontainers_1621217038088/work
+sympy==1.6.1
+tblib @ file:///home/conda/feedstock_root/build_artifacts/tblib_1616261298899/work
+tenacity @ file:///home/conda/feedstock_root/build_artifacts/tenacity_1626090218611/work
+terminado==0.8.3
+testpath==0.4.4
+threadpoolctl==3.1.0
+tikzplotlib==0.9.8
+toolz @ file:///home/conda/feedstock_root/build_artifacts/toolz_1600973991856/work
+tornado @ file:///D:/bld/tornado_1610094858390/work
+tqdm==4.57.0
+traceback2==1.4.0
+traitlets @ file:///home/conda/feedstock_root/build_artifacts/traitlets_1602771532708/work
+typing==3.7.4.3
+typing-extensions @ file:///home/conda/feedstock_root/build_artifacts/typing_extensions_1622748266870/work
+unittest-parallel==0.8.7
+unittest2==1.1.0
+urllib3 @ file:///home/conda/feedstock_root/build_artifacts/urllib3_1624634538755/work
+wcwidth==0.2.5
+webencodings==0.5.1
+Werkzeug @ file:///home/conda/feedstock_root/build_artifacts/werkzeug_1621518206714/work
+widgetsnbextension==3.5.1
+win-inet-pton @ file:///D:/bld/win_inet_pton_1610147566231/work
+wincertstore==0.2
+zict==2.0.0
+zipp @ file:///home/conda/feedstock_root/build_artifacts/zipp_1625284368454/work

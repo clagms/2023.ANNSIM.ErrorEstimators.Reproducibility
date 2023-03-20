@@ -1,0 +1,7 @@
+git clone https://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:x-oauth-basic@github.com/clagms/EminColab.git
+cd EminColab/experiments/
+python -m pip install --upgrade pip
+pip install wheel
+pip install -r requirements.txt
+export PYTHONPATH=".:src"
+python -m unittest test.test_4_msd.FourMSDTests.test_parameter_exploration_random_parallel
