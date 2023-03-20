@@ -2,12 +2,24 @@
 
 ## Code Description
 
-### Parameter Set tests
+### Parameter Set Results
 
-The selection of the initial conditions (`X0`) and the parameter values (`COSIM_PARAMS`) can be done in `./src/sys_params.py`.  
-The individual tests with the system parameter sets tabulated in the paper is done in `./test/adaptive_cosim_tests.py`.
+* The selection of the initial conditions (`X0`) and the parameter values (`COSIM_PARAMS`) can be done in `./src/sys_params.py`.  
+There you can find the parameter sets that are listed in the paper. However, you can still modify them and play with system parameters of the mass-spring-damper systems. 
 
+* The linear MSD system model is simulated in `./test/adaptive_cosim_tests.py` file. 
 
+* The function `test_run_adaptive_cosim_power_input` benchmarks adaptive scheduling algorithms (input estimation and power transfer) against static co-simulation sequences for the given linear problem.
+
+* The requested plots can be switched on/off by setting the boolean variables `True` or `False`.
+
+### Parameter Sweep Results
+
+The parameter sweep results can be obtained by running the `parameter_sweep.py` in `src` folder.
+This file runs the system with random parameters to obtain the effect of the parameters on co-simulation accuracy and sequence selection.
+However, this file produces only the raw simulation result data. 
+In order to post-process the data and obtain the figures in the paper, the user must run `analyze_parameter_sweep_results.py` in `src` folder.
+This python file can post_process the data into meaningful expressions, e.g. extracting the best sequence at a time, as well as plotting them, e.g. plotting the frequency of adaptive algorithm staying as the best sequence.
 
 ## Running the Code
 
