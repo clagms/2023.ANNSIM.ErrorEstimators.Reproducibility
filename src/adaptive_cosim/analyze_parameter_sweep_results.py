@@ -9,7 +9,7 @@ from cosim_msd_utils import CoupledMSD, get_analytical_error
 import numpy as np
 
 from fsutils import resource_file_path
-from main import X0
+from sys_params import X0
 
 
 def plot_results(results):
@@ -375,7 +375,7 @@ if __name__ == '__main__':
             save_vars(scores,'scores.pickle')
         else:
             # search in current directory "adaptive_cosim"
-            precomputed_filename = 'scores_'+adap_scores[i]+'.pickle'
+            precomputed_filename = '../../datasets/scores/scores_'+adap_scores[i]+'.pickle'
             scores = load_vars(precomputed_filename)
         df_score = export_df_score(scores, given_vars=given_vars)
         print("Score Mean: " + str(df_score["OldScore"].mean()))

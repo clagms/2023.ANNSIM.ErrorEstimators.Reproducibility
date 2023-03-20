@@ -9,7 +9,7 @@ from tqdm import tqdm
 
 from adaptive_cosim.adaptive_cosim_msd import store_results_cosim_compare, store_results_cosim_all_compare
 from fsutils import resource_file_path
-from main import X0
+from sys_params import X0
 
 
 def run_experiments(x0, H, tf, total_cosims, param_per_task, out_dir, allp=False, parallel=False):
