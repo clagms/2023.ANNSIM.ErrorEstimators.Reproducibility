@@ -229,9 +229,10 @@ class AdaptiveCosimTests(TimedTest):
         sol = CoupledMSD("sol")
 
         results = {}
-        if load_sim:
+        static_filename = './static_msd2_results.pickle'
+        if load_sim and os.path.exists(static_filename):
             # load static results
-            with open('./static_msd2_results.pickle', 'rb') as f:
+            with open(static_filename, 'rb') as f:
                 results = pickle.load(f)
         else:
             # obtain static results
@@ -242,14 +243,15 @@ class AdaptiveCosimTests(TimedTest):
                                                        COSIM_PARAMS, X0, H, tf,
                                                        static_mode=True, msd1_first=False)
             # save static results
-            file = open('./static_msd2_results.pickle', 'wb')
+            file = open(static_filename, 'wb')
             pickle.dump(results, file)
             file.close()
 
         # simulation settings
-        if load_adap:
+        adaptive_filename = "./adap_msd2_results.pickle"
+        if load_adap and os.path.exists(adaptive_filename):
             # load adap results
-            with open('./adap_msd2_results.pickle', 'rb') as f:
+            with open(adaptive_filename, 'rb') as f:
                 results = pickle.load(f)
         else:
             # initalize msds
@@ -287,7 +289,7 @@ class AdaptiveCosimTests(TimedTest):
                                                            cooldown=cooldown_period,
                                                            estimator=error_estimator)
             # save adap results
-            file = open('./adap_msd2_results.pickle', 'wb')
+            file = open(adaptive_filename, 'wb')
             pickle.dump(results, file)
             file.close()
 
