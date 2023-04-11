@@ -1,9 +1,13 @@
 # 2023.ANNSIM.ErrorEstimators.Reproducibility
 
+This repository contains the code necessary to reproduce the results presented in the paper:
+> Inci, Emin Oguz, Cláudio Gomes, Jan Croes, and Wim Desmet. “Error Estimators for Adaptive Scheduling Algorithm for Serial Co-Simulation.” In Annual Modelling and Simulation Conference. Ontario, Canada, 2023.
+
 ## Contacts
 
-For help setting up and running this reproducibility package, please open an issue, or contact the contributors directly.
+For help setting up and running this reproducibility package, please contact the contributors directly. Their email is in the paper.
 
+If you have any issues that you think are caused by poor documentation or code, please open an issue.
 
 ## Code Description
 
@@ -23,8 +27,8 @@ There you can find the parameter sets that are listed in the paper. However, you
 The parameter sweep results can be obtained by running the [./src/adaptive_cosim/parameter_sweep.py](./src/adaptive_cosim/parameter_sweep.py).
 This file runs the system with random parameters to obtain the effect of the parameters on co-simulation accuracy and sequence selection.
 However, this file produces only the raw simulation result data. 
-In order to post-process the data and obtain the figures in the paper, the user must run [./src/adaptive_cosim/analyze_parameter_sweep_results.py](./src/adaptive_cosim/analyze_parameter_sweep_results.py).
-This python file can post_process the data into meaningful expressions, e.g. extracting the best sequence at a time, as well as plotting them, e.g. plotting the frequency of adaptive algorithm staying as the best sequence.
+In order to post process the data and obtain the figures in the paper, the user must run [./src/adaptive_cosim/analyze_parameter_sweep_results.py](./src/adaptive_cosim/analyze_parameter_sweep_results.py).
+This python file can post process the data into meaningful expressions, e.g. extracting the best sequence at a time, as well as plotting them, e.g. plotting the frequency of adaptive algorithm staying as the best sequence.
 
 ## Running the Code
 
