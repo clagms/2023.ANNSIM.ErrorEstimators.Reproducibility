@@ -1,6 +1,5 @@
 import os.path
 import unittest
-import pickle
 
 import matplotlib.pyplot as plt
 
@@ -23,7 +22,6 @@ class AdaptiveCosimTests(TimedTest):
         # settings
         global_error = True
         load_ref = False
-        load_sim = False
         msd1first = True
 
         tf = 5.0 if not NONSTOP else .10
@@ -31,50 +29,24 @@ class AdaptiveCosimTests(TimedTest):
         nsteps_msd1 = [10, 25, 50, 100]
         nsteps_msd2 = nsteps_msd1
 
-        ref_filename = './ref_msd2_results.pickle'
-        if load_ref and os.path.exists(ref_filename):
-            msd1 = MSD1Adaptive("msd1", global_error, nstep=200)
-            msd2 = MSD2Adaptive("msd2", global_error, nstep=200)
-            # load static results
-            with open(ref_filename, 'rb') as f:
-                reference = pickle.load(f)
-        else:
-            msd1 = MSD1Adaptive("msd1", global_error, nstep=200)
-            msd2 = MSD2Adaptive("msd2", global_error, nstep=200)
-            sol = CoupledMSD("sol")
-            reference = run_adaptive_cosim(msd1, msd2, sol,
-                                       COSIM_PARAMS, X0, H, tf,
-                                       static_mode=True, msd1_first=msd1first)
-
-            # save static results
-            file = open(ref_filename, 'wb')
-            pickle.dump(reference, file)
-            file.close()
+        msd1 = MSD1Adaptive("msd1", global_error, nstep=200)
+        msd2 = MSD2Adaptive("msd2", global_error, nstep=200)
+        sol = CoupledMSD("sol")
+        reference = run_adaptive_cosim(msd1, msd2, sol,
+                                    COSIM_PARAMS, X0, H, tf,
+                                    static_mode=True, msd1_first=msd1first)
 
         results = []
-        if load_sim:
-            for i in range(len(nsteps_msd1)):
-                msd1 = MSD1Adaptive("msd1", global_error, nstep=nsteps_msd1[i])
-                msd2 = MSD2Adaptive("msd2", global_error, nstep=nsteps_msd2[i])
-                sol = CoupledMSD("sol")
-            # load static results
-            with open('./static_msd2_results.pickle', 'rb') as f:
-                results = pickle.load(f)
-        else:
-            for i in range(len(nsteps_msd1)):
-                msd1 = MSD1Adaptive("msd1", global_error, nstep=nsteps_msd1[i])
-                msd2 = MSD2Adaptive("msd2", global_error, nstep=nsteps_msd2[i])
-                sol = CoupledMSD("sol")
-                results.append({})
-                # obtain static results
-                results[i] = run_adaptive_cosim(msd1, msd2, sol,
-                                               COSIM_PARAMS, X0, H, tf,
-                                               static_mode=True, msd1_first=msd1first)
-
-            # save static results
-            file = open('./static_msd2_results.pickle', 'wb')
-            pickle.dump(results, file)
-            file.close()
+        
+        for i in range(len(nsteps_msd1)):
+            msd1 = MSD1Adaptive("msd1", global_error, nstep=nsteps_msd1[i])
+            msd2 = MSD2Adaptive("msd2", global_error, nstep=nsteps_msd2[i])
+            sol = CoupledMSD("sol")
+            results.append({})
+            # obtain static results
+            results[i] = run_adaptive_cosim(msd1, msd2, sol,
+                                            COSIM_PARAMS, X0, H, tf,
+                                            static_mode=True, msd1_first=msd1first)
 
         plt.figure()
         plt.title('L2 error x1')
@@ -98,7 +70,6 @@ class AdaptiveCosimTests(TimedTest):
 
         # settings
         global_error = True
-        load_sim = False
 
         tf = 5.0 if not NONSTOP else .10
         H = 0.01
@@ -110,24 +81,15 @@ class AdaptiveCosimTests(TimedTest):
         sol = CoupledMSD("sol")
 
         results = {}
-        static_filename = './static_msd2_results.pickle'
-        if load_sim and os.path.exists(static_filename):
-            # load static results
-            with open(static_filename, 'rb') as f:
-                results = pickle.load(f)
-        else:
-            # obtain static results
-            results['MSD1->MSD2'] = run_adaptive_cosim(msd1, msd2, sol,
-                                                       COSIM_PARAMS, X0, H, tf,
-                                                       static_mode=True, msd1_first=True)
+        
+        # obtain static results
+        results['MSD1->MSD2'] = run_adaptive_cosim(msd1, msd2, sol,
+                                                    COSIM_PARAMS, X0, H, tf,
+                                                    static_mode=True, msd1_first=True)
 
-            results['MSD2->MSD1'] = run_adaptive_cosim(msd1, msd2, sol,
-                                                       COSIM_PARAMS, X0, H, tf,
-                                                       static_mode=True, msd1_first=False)
-            # save static results
-            file = open(static_filename, 'wb')
-            pickle.dump(results, file)
-            file.close()
+        results['MSD2->MSD1'] = run_adaptive_cosim(msd1, msd2, sol,
+                                                    COSIM_PARAMS, X0, H, tf,
+                                                    static_mode=True, msd1_first=False)
 
         results['Adaptive'] = run_adaptive_cosim(msd1, msd2, sol,
                                                    COSIM_PARAMS, X0, H, tf,
@@ -192,7 +154,6 @@ class AdaptiveCosimTests(TimedTest):
     def test_run_adaptive_cosim_power_input(self):
         # simulation settings
         global_error = False
-        load_sim = True
         load_adap = True
         logscale = True
         msd1first = False
@@ -229,69 +190,50 @@ class AdaptiveCosimTests(TimedTest):
         sol = CoupledMSD("sol")
 
         results = {}
-        static_filename = './static_msd2_results.pickle'
-        if load_sim and os.path.exists(static_filename):
-            # load static results
-            with open(static_filename, 'rb') as f:
-                results = pickle.load(f)
-        else:
-            # obtain static results
-            results['MSD1->MSD2'] = run_adaptive_cosim(msd1, msd2, sol,
-                                                       COSIM_PARAMS, X0, H, tf,
-                                                       static_mode=True, msd1_first=True)
-            results['MSD2->MSD1'] = run_adaptive_cosim(msd1, msd2, sol,
-                                                       COSIM_PARAMS, X0, H, tf,
-                                                       static_mode=True, msd1_first=False)
-            # save static results
-            file = open(static_filename, 'wb')
-            pickle.dump(results, file)
-            file.close()
+        
+        # obtain static results
+        results['MSD1->MSD2'] = run_adaptive_cosim(msd1, msd2, sol,
+                                                    COSIM_PARAMS, X0, H, tf,
+                                                    static_mode=True, msd1_first=True)
+        results['MSD2->MSD1'] = run_adaptive_cosim(msd1, msd2, sol,
+                                                    COSIM_PARAMS, X0, H, tf,
+                                                    static_mode=True, msd1_first=False)
+        # simulation settings
+        
+        # initalize msds
+        msd1 = MSD1Adaptive("msd1", global_error, nstep=nsteps_msd1)
+        msd2 = MSD2Adaptive("msd2", global_error, nstep=nsteps_msd2)
+        sol = CoupledMSD("sol")
+
+        error_estimator = 'input'
+        mass_normalize = False
+        filtered = True
+        cooldown_period = 1
+        results['Adaptive Input'] = run_adaptive_cosim(msd1, msd2, sol,
+                                                        COSIM_PARAMS, X0, H, tf,
+                                                        static_mode=False, msd1_first=msd1first,
+                                                        mass_normalize=mass_normalize,
+                                                        filter=filtered,
+                                                        cooldown=cooldown_period,
+                                                        estimator=error_estimator)
+
+        # initalize msds
+        msd1 = MSD1Adaptive("msd1", global_error, nstep=nsteps_msd1)
+        msd2 = MSD2Adaptive("msd2", global_error, nstep=nsteps_msd2)
+        sol = CoupledMSD("sol")
 
         # simulation settings
-        adaptive_filename = "./adap_msd2_results.pickle"
-        if load_adap and os.path.exists(adaptive_filename):
-            # load adap results
-            with open(adaptive_filename, 'rb') as f:
-                results = pickle.load(f)
-        else:
-            # initalize msds
-            msd1 = MSD1Adaptive("msd1", global_error, nstep=nsteps_msd1)
-            msd2 = MSD2Adaptive("msd2", global_error, nstep=nsteps_msd2)
-            sol = CoupledMSD("sol")
-
-            error_estimator = 'input'
-            mass_normalize = False
-            filtered = True
-            cooldown_period = 1
-            results['Adaptive Input'] = run_adaptive_cosim(msd1, msd2, sol,
-                                                           COSIM_PARAMS, X0, H, tf,
-                                                           static_mode=False, msd1_first=msd1first,
-                                                           mass_normalize=mass_normalize,
-                                                           filter=filtered,
-                                                           cooldown=cooldown_period,
-                                                           estimator=error_estimator)
-
-            # initalize msds
-            msd1 = MSD1Adaptive("msd1", global_error, nstep=nsteps_msd1)
-            msd2 = MSD2Adaptive("msd2", global_error, nstep=nsteps_msd2)
-            sol = CoupledMSD("sol")
-
-            # simulation settings
-            error_estimator = 'power'
-            mass_normalize = False
-            filtered = True
-            cooldown_period = 1
-            results['Adaptive Power'] = run_adaptive_cosim(msd1, msd2, sol,
-                                                           COSIM_PARAMS, X0, H, tf,
-                                                           static_mode=False, msd1_first=msd1first,
-                                                           mass_normalize=mass_normalize,
-                                                           filter=filtered,
-                                                           cooldown=cooldown_period,
-                                                           estimator=error_estimator)
-            # save adap results
-            file = open(adaptive_filename, 'wb')
-            pickle.dump(results, file)
-            file.close()
+        error_estimator = 'power'
+        mass_normalize = False
+        filtered = True
+        cooldown_period = 1
+        results['Adaptive Power'] = run_adaptive_cosim(msd1, msd2, sol,
+                                                        COSIM_PARAMS, X0, H, tf,
+                                                        static_mode=False, msd1_first=msd1first,
+                                                        mass_normalize=mass_normalize,
+                                                        filter=filtered,
+                                                        cooldown=cooldown_period,
+                                                        estimator=error_estimator)
 
         # ERROR WRT. ANALYTICAL SOLUTION
         x1_cosim_error = get_analytical_error(results['MSD1->MSD2'], msd1, sol, 'x1')
