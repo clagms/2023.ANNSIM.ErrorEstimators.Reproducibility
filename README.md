@@ -40,7 +40,7 @@ Setup environment (see [setup_dev.ps1](./setup_dev.ps1)):
 
 Run the unit test desired: 
 1. Activate virtual environment
-2. `python -m unittest test.cosimulation_solution.MyTestCase.test_show_l2_error`
+2. `python -m unittest test.adaptive_cosim_tests.AdaptiveCosimTests.test_microstep_convergence`
 
 Run all tests (see the file [run_tests.ps1](./run_tests.ps1)):\
 1. Activate virtual environment
